@@ -80,10 +80,10 @@
             touch-action: none;
         }
 
-        /* CÔNG CỤ CỐ ĐỊNH Ở PHÍA TRÊN */
-        .top-toolbar {
+        /* CÔNG CỤ CỐ ĐỊNH Ở PHÍA DƯỚI */
+        .bottom-toolbar {
             position: absolute;
-            top: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -647,11 +647,11 @@
         }
 
         @media (max-width: 1024px) {
-            .top-toolbar {
+            .bottom-toolbar {
                 flex-wrap: wrap;
                 justify-content: center;
                 width: 95%;
-                top: 10px;
+                bottom: 10px;
                 padding: 10px;
             }
             
@@ -716,7 +716,7 @@
         }
 
         @media (max-width: 768px) {
-            .top-toolbar {
+            .bottom-toolbar {
                 gap: 5px;
             }
             
@@ -756,9 +756,9 @@
                 padding: 15px;
             }
             
-            .top-toolbar {
+            .bottom-toolbar {
                 padding: 8px;
-                top: 5px;
+                bottom: 5px;
             }
             
             .tool-button {
@@ -805,120 +805,115 @@
                 transform: scale(0.95);
             }
         }
+
         /* THÊM VÀO PHẦN CSS - SỬA LỖI HIỂN THỊ TRÊN MOBILE */
+        #mobileWarning {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            text-align: center;
+            max-width: 80%;
+        }
 
-/* Mobile warning - hiển thị cảnh báo trên mobile */
-#mobileWarning {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 1000;
-    text-align: center;
-    max-width: 80%;
-}
+        /* Cải thiện grid cho mobile */
+        @media (max-width: 768px) {
+            .shape-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .shape-option {
+                min-height: 50px;
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .shape-option span {
+                font-size: 0.7rem;
+                line-height: 1.2;
+            }
+            
+            .modal-content {
+                max-height: 85vh;
+            }
+            
+            .shape-grid-container {
+                max-height: 60vh;
+            }
+        }
 
-/* Cải thiện grid cho mobile */
-@media (max-width: 768px) {
-    .shape-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
-    .shape-option {
-        min-height: 50px;
-        padding: 10px 5px;
-        font-size: 0.8rem;
-    }
-    
-    .shape-option span {
-        font-size: 0.7rem;
-        line-height: 1.2;
-    }
-    
-    /* Đảm bảo modal đủ lớn để hiển thị 6 hình */
-    .modal-content {
-        max-height: 85vh;
-    }
-    
-    .shape-grid-container {
-        max-height: 60vh;
-    }
-}
+        @media (max-width: 480px) {
+            .shape-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .shape-option {
+                min-height: 45px;
+                padding: 8px 4px;
+            }
+            
+            .shape-option span {
+                font-size: 0.65rem;
+            }
+            
+            .bottom-toolbar {
+                bottom: 10px;
+                padding: 8px;
+                gap: 4px;
+            }
+            
+            .tool-button {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .tool-button span {
+                font-size: 0.6rem;
+            }
+        }
 
-@media (max-width: 480px) {
-    .shape-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .shape-option {
-        min-height: 45px;
-        padding: 8px 4px;
-    }
-    
-    .shape-option span {
-        font-size: 0.65rem;
-    }
-    
-    /* Toolbar mobile */
-    .top-toolbar {
-        top: 10px;
-        padding: 8px;
-        gap: 4px;
-    }
-    
-    .tool-button {
-        width: 55px;
-        height: 55px;
-    }
-    
-    .tool-button span {
-        font-size: 0.6rem;
-    }
-}
+        @media (max-width: 360px) {
+            .shape-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-button {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+        }
 
-/* Đặc biệt cho màn hình rất nhỏ */
-@media (max-width: 360px) {
-    .shape-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .header-button {
-        padding: 4px 8px;
-        font-size: 0.7rem;
-    }
-}
+        .shape-grid-container {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+        }
 
-/* Cải thiện scroll cho mobile */
-.shape-grid-container {
-    -webkit-overflow-scrolling: touch;
-    overflow-y: auto;
-}
+        .shape-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
 
-/* Đảm bảo tất cả hình hiển thị */
-.shape-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 100%;
-}
-
-.shape-option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    word-break: break-word;
-}
+        .shape-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            word-break: break-word;
+        }
     </style>
 </head>
 <body>
     <div id="app">
+        <!-- HEADER CỐ ĐỊNH Ở TRÊN: Chứa các nút điều khiển chính -->
         <header>
             <div class="header-controls">
                 <!-- NÚT QUAY LẠI: Trở về góc nhìn mặc định -->
@@ -941,8 +936,8 @@
                 <!-- CANVAS 3D: Nơi hiển thị tất cả các hình khối 3D -->
                 <canvas id="sceneCanvas"></canvas>
                 
-                <!-- CÔNG CỤ CỐ ĐỊNH Ở PHÍA TRÊN -->
-                <div class="top-toolbar">
+                <!-- CÔNG CỤ CỐ ĐỊNH Ở PHÍA DƯỚI: Chứa các công cụ vẽ chính -->
+                <div class="bottom-toolbar">
                     <!-- NÚT TẠO HÌNH: Mở hộp thoại để tạo hình khối mới -->
                     <button class="tool-button" id="createShapeTool" title="Tạo hình khối">
                         <span>Tạo hình</span>
@@ -961,17 +956,15 @@
                     </button>
                 </div>
                 
-                <!-- NÚT ẨN/HIỆN PANEL TRÁI -->
+                <!-- CÁC PHẦN TỬ KHÁC GIỮ NGUYÊN -->
                 <div class="panel-toggle left-panel-toggle" id="leftPanelToggle">
                     <span id="leftPanelToggleIcon">&#9664;</span>
                 </div>
                 
-                <!-- NÚT ẨN/HIỆN PANEL PHẢI -->
                 <div class="panel-toggle right-panel-toggle" id="rightPanelToggle">
                     <span id="rightPanelToggleIcon">&#9654;</span>
                 </div>
                 
-                <!-- PANEL HƯỚNG DẪN: Hiển thị hướng dẫn sử dụng cơ bản -->
                 <div class="tutorial" id="tutorialPanel">
                     <h3>Hướng dẫn sử dụng</h3>
                     <button class="close-side-panel" id="closeTutorial">&times;</button>
@@ -983,13 +976,11 @@
                     </ul>
                 </div>
                 
-                <!-- PANEL THÔNG TIN: Hiển thị thông báo tạm thời -->
                 <div id="infoPanel">
                     <h3>Thông tin</h3>
                     <p id="infoText">Chọn một hình khối để bắt đầu</p>
                 </div>
                 
-                <!-- PANEL TRÁI: Hiển thị thông tin chi tiết về hình khối được chọn -->
                 <div class="side-panel left-panel" id="leftPanel">
                     <h3>Thông tin hình khối</h3>
                     <button class="close-side-panel" id="closeLeftPanel">&times;</button>
@@ -998,7 +989,6 @@
                     </div>
                 </div>
 
-                <!-- PANEL PHẢI: Công cụ để thêm điểm và đoạn thẳng -->
                 <div class="side-panel right-panel" id="rightPanel">
                     <h3>Thêm phần tử</h3>
                     <button class="close-side-panel" id="closeRightPanel">&times;</button>
@@ -1008,7 +998,6 @@
                         <button class="right-panel-tab" data-tab="addSegmentTab">Đoạn thẳng</button>
                     </div>
                     
-                    <!-- TAB THÊM ĐIỂM: Các tùy chọn để thêm điểm mới -->
                     <div class="right-panel-tab-content active" id="addPointTab">
                         <div class="form-group">
                             <label for="newPointType">Loại điểm:</label>
@@ -1049,7 +1038,6 @@
                         </div>
                     </div>
 
-                    <!-- TAB ĐOẠN THẲNG: Kết nối hai điểm để tạo đoạn thẳng -->
                     <div class="right-panel-tab-content" id="addSegmentTab">
                         <h4>Nối đoạn thẳng</h4>
                         <div class="form-group">
@@ -1070,7 +1058,7 @@
         </div>
     </div>
 
-    <!-- MODAL TẠO HÌNH KHỐI: Chọn loại hình khối để tạo -->
+    <!-- CÁC MODAL VẪN GIỮ NGUYÊN -->
     <div class="modal" id="createShapeModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1106,7 +1094,7 @@
         </div>
     </div>
 
-    <!-- MODAL ĐẶT ĐIỂM THEO TỌA ĐỘ: Thêm điểm mới bằng cách nhập tọa độ cụ thể -->
+    <!-- CÁC MODAL KHÁC VẪN GIỮ NGUYÊN -->
     <div class="modal" id="pointByCoordModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1138,7 +1126,6 @@
         </div>
     </div>
 
-    <!-- MODAL VẼ VECTOR: Tạo vector từ điểm hoặc từ thành phần tọa độ -->
     <div class="modal" id="vectorModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1193,7 +1180,6 @@
         </div>
     </div>
 
-    <!-- MODAL TÔ MÀU MẶT PHẲNG: Tô màu các mặt phẳng được xác định bởi các điểm -->
     <div class="modal" id="colorPlaneModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1226,7 +1212,6 @@
         </div>
     </div>
 
-    <!-- MODAL LƯU HÌNH: Lưu hình hiện tại với tên tùy chỉnh -->
     <div class="modal" id="saveShapeModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -3466,8 +3451,8 @@
             
             // THÊM ACTIVE CLASS CHO TAB ĐƯỢC CLICK
             event.target.classList.add('active');
-
-        // CẬP NHẬT DROPDOWNS NẾU CẦN
+            
+            // CẬP NHẬT DROPDOWNS NẾU CẦN
             if (tabName === 'addPointTab') {
                 updatePointDropdowns();
                 updatePlaneDropdowns();
@@ -3621,7 +3606,7 @@
 
         // ========== GÁN SỰ KIỆN CHO CÁC NÚT VÀ CONTROL ==========
 
-        // GÁN SỰ KIỆN CHO CÁC NÚT CÔNG CỤ CHÍNH
+        // GÁN SỰ KIỆN CHO CÁC NÚT CÔNG CỤ CHÍNH (Ở DƯỚI)
         document.getElementById('createShapeTool').addEventListener('click', function() {
             showCreateShapeModal();
         });
@@ -3640,28 +3625,28 @@
             this.classList.add('active');
         });
 
-        // SỰ KIỆN CHO NÚT QUAY LẠI
+        // SỰ KIỆN CHO NÚT QUAY LẠI (Ở TRÊN)
         document.getElementById('backButton').addEventListener('click', function() {
             changeView('default');
         });
 
-        // SỰ KIỆN CHO NÚT TÔ MÀU MẶT PHẲNG
+        // SỰ KIỆN CHO NÚT TÔ MÀU MẶT PHẲNG (Ở TRÊN)
         document.getElementById('colorPlaneButton').addEventListener('click', function() {
             showColorPlaneModal();
         });
 
-        // SỰ KIỆN CHO NÚT LƯU HÌNH
+        // SỰ KIỆN CHO NÚT LƯU HÌNH (Ở TRÊN)
         document.getElementById('saveButton').addEventListener('click', function() {
             showSaveShapeModal();
         });
 
-        // SỰ KIỆN CHO NÚT GÓC NHÌN
+        // SỰ KIỆN CHO NÚT GÓC NHÌN (Ở TRÊN)
         document.getElementById('viewButton').addEventListener('click', function() {
             viewIndex = (viewIndex + 1) % views.length;
             changeView(views[viewIndex].name);
         });
 
-        // SỰ KIỆN CHO NÚT HƯỚNG DẪN
+        // SỰ KIỆN CHO NÚT HƯỚNG DẪN (Ở TRÊN)
         document.getElementById('helpButton').addEventListener('click', function() {
             document.getElementById('tutorialPanel').style.display = 'block';
         });
@@ -4174,35 +4159,8 @@
             }
         }
 
-        // HÀM CẬP NHẬT CÁC MẶT PHẲNG KHI THAY ĐỔI TỌA ĐỘ ĐIỂM
-        function updatePlanes() {
-            planeObjects.forEach(obj => scene.remove(obj));
-            planeObjects.length = 0;
-            
-            if (selectedMesh) {
-                const shapeType = selectedMesh.userData.shapeType;
-                
-                switch(shapeType) {
-                    case 'tetrahedron':
-                    case 'triangularPyramid':
-                        createPlanesForTetrahedron();
-                        break;
-                    case 'triangularPrism':
-                        createPlanesForTriangularPrism();
-                        break;
-                    case 'pyramid':
-                        createPlanesForPyramid();
-                        break;
-                    case 'cube':
-                        createPlanesForCube();
-                        break;
-                    case 'cuboid':
-                        createPlanesForCuboid();
-                        break;
-                }
-            }
-        }
-
     </script>
 </body>
 </html>
+                   
+                        
